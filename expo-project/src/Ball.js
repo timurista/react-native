@@ -3,6 +3,7 @@ import { View, Animated } from "react-native";
 
 export default class Ball extends Component {
   componentWillMount() {
+    // animation system doesnt work like state
     this.position = new Animated.ValueXY(0, 0);
     Animated.spring(this.position, {
       toValue: { x: 200, y: 500 }
