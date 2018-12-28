@@ -23,3 +23,15 @@ Layout animation
 ## Animated
 
 If you want a thing to respond to user input. Much more complicated but far more power with it. Reach for animated.
+
+## Ball movement
+
+down from top to bottom, smooth motion
+3 questions for animation
+
+1. Where is item right now? Exact x,y
+2. where is element moving to
+3. which elemnt are we moving?
+
+How is animation changing? spring, decay, timing
+components, view text image
