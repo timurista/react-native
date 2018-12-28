@@ -23,7 +23,6 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Deck</Text>
         <Deck data={DATA} renderCard={this.renderCard} />
       </View>
     );
