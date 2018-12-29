@@ -76,15 +76,50 @@ text user the code
 
 DOn't do this, because it's easy and trivial for program to grab password.
 
-## Correct Flow
+## Correct Flow for OTP
 
 User requests OTP
 aknowledge request
 
-- generate code save it on backend
-- text user a code
+- generate code save it on backend (Firebase)
+- text user a code (Twilio, send user a code)
 
 user sends us correct code
 
 - compare codes on server
-- send user a jwt to idenitfy them (for future follow up requests)
+- send user a jwt to idenitfy them (for future follow up requests) (Firebase)
+
+## Solution for code generation?
+
+Use some cloud functions to compare and generate codes
+
+## Server vs Serverless Computing
+
+- Server is dedicated machinery
+- servless, runs only for microseconds to seconds.
+- Google cloud runs that function then throws it away
+- code is organized into functions.
+- functions do one thing requests directed externally to a specific function.
+
+## User flow for authenticating their app
+
+1. User enters email and phone
+2. verify phone is not in use
+3. create a new user record in Firebase
+4. Respond to a request, stating user was created
+5. user requests to login with phone number
+6. generate a code
+7. save code to the user's record
+8. text the code to the user
+9. user enters code
+10. compare codes
+11. mark code as no longer being valid // code is thrown away, good security hygine.
+12. return a jwt to user
+
+1-4 first cloud function
+5-8 second cloud function
+9-12 is final cloud function
+
+## Who we characterize which functions are?
+
+clear inputs and clear expected outputs
