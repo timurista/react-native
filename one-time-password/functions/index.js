@@ -1,8 +1,10 @@
 const admin = require("firebase-admin");
 const functions = require("firebase-functions");
 const createUser = require("./src/createUser");
+const requestOneTimePassword = require("./src/requestOneTimePassword");
+const verifyOneTimePassword = require("./src/verifyOneTimePassword");
+
 const serviceAccount = require("./secrets/serviceAccountKey.json");
-const requestOneTimePassword = require("./src/requestOneTimePassword.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -13,4 +15,8 @@ admin.initializeApp({
 exports.createUser = functions.https.onRequest(createUser);
 exports.requestOneTimePassword = functions.https.onRequest(
   requestOneTimePassword
+);
+
+exports.verifyOneTimePassword = functions.https.onRequest(
+  verifyOneTimePassword
 );

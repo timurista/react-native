@@ -1,6 +1,6 @@
 // using twilio client
 // require here
 const twilio = require("twilio");
-import { ACCOUNT_SID, AUTH_TOKEN } from "../secrets/twilioSecrets.json";
+const tws = require("../secrets/twilioSecrets");
 
-module.exports = twilio(ACCOUNT_SID, AUTH_TOKEN);
+module.exports = new twilio(tws.ACCOUNT_SID, tws.AUTH_TOKEN);
