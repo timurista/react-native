@@ -1,15 +1,23 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
-import { FormLabel, FormInput, Button } from "react-native-elements";
+import {
+  FormLabel,
+  FormInput,
+  Button,
+  FormValidationMessage
+} from "react-native-elements";
 
-export default class SignUpForm extends Component {
+class SignUpForm extends Component {
+  state = { phone: "" };
   render() {
     return (
-      <View>
-        <FormLabel>Enter Phone Number</FormLabel>
+      <View style={{ marginBottom: 10 }}>
+        <FormLabel>text</FormLabel>
         <FormInput />
         <Button title="Submit" />
       </View>
     );
   }
 }
+
+export default SignUpForm;

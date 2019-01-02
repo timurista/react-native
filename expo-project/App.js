@@ -3,7 +3,8 @@ import { Text, StyleSheet, View } from "react-native";
 import Deck from "./src/Deck";
 import { DATA } from "./deckdata";
 import { Card, Button } from "react-native-elements";
-import { SignUpForm } from "./src/SignUpForm";
+import SignUpForm from "./src/SignUpForm";
+// import Ball from "./src/Ball";
 
 export default class App extends React.Component {
   renderCard = item => {
@@ -31,15 +32,16 @@ export default class App extends React.Component {
   }
 
   render() {
-    const deck = (
-      <Deck
-        data={DATA}
-        renderCard={this.renderCard}
-        renderNoMoreCards={this.renderNoMoreCards}
-      />
+    return (
+      <View style={styles.container}>
+        <Deck
+          data={DATA}
+          renderCard={this.renderCard}
+          renderNoMoreCards={this.renderNoMoreCards}
+        />
+        <SignUpForm />
+      </View>
     );
-    const signUp = <SignUpForm />;
-    return <View style={styles.container}>{signUp}</View>;
   }
 }
 
