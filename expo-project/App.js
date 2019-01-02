@@ -34,12 +34,12 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <SignUpForm />
         <Deck
           data={DATA}
           renderCard={this.renderCard}
           renderNoMoreCards={this.renderNoMoreCards}
         />
-        <SignUpForm />
       </View>
     );
   }
