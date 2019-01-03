@@ -8,6 +8,7 @@ import {
 } from "react-native-elements";
 import axios from "axios";
 import { ROOT_URL } from "../secrets/project_urls";
+import firebase from "firebase";
 
 class SignInForm extends Component {
   state = { phone: "", code: "", error: "" };
@@ -17,11 +18,12 @@ class SignInForm extends Component {
     console.log(ROOT_URL, this.state.phone);
 
     try {
-      let res = await axios.post(`${ROOT_URL}/verifyOneTimePassword`, {
+      let { data } = await axios.post(`${ROOT_URL}/verifyOneTimePassword`, {
         phone: this.state.phone,
         code: this.state.code
       });
-      console.log(res);
+
+      firebase.auth().signInWithCustomToken(data.token);
     } catch (e) {
       console.log(e);
       // this.setState({ error: e });
