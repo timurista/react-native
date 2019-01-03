@@ -3,10 +3,15 @@ import { Text, StyleSheet, View } from "react-native";
 import Deck from "./src/Deck";
 import { DATA } from "./deckdata";
 import { Card, Button } from "react-native-elements";
-import SignUpForm from "./src/SignUpForm";
-// import Ball from "./src/Ball";
+// import SignUpForm from "./src/SignUpForm";
+// import SignInForm from "./src/SignInForm";
+import firebase from "firebase";
+import { config } from "./secrets/firebase_config";
 
 export default class App extends React.Component {
+  componentDidMount() {
+    firebase.initializeApp(config);
+  }
   renderCard = item => {
     return (
       <Card key={item.id} title={item.text} image={{ uri: item.uri }}>
@@ -34,7 +39,6 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <SignUpForm />
         <Deck
           data={DATA}
           renderCard={this.renderCard}
